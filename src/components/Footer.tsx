@@ -27,9 +27,9 @@ export function Footer() {
                     <div className="col-span-2 md:col-span-4 lg:col-span-1">
                         <div className="flex items-center space-x-3 mb-4">
                             <div className={`w-10 h-10 ${colors.accent} rounded-lg flex items-center justify-center`}>
-                                <span className="text-white font-bold text-xl">M</span>
+                                <span className="text-white font-bold text-xl">S</span>
                             </div>
-                            <span className="font-bold text-xl text-white">ModernSite</span>
+                            <span className="font-bold text-xl text-white">Schönsaufen</span>
                         </div>
                         <p className="text-sm mb-4">
                             Building modern web experiences with cutting-edge technology and beautiful design.

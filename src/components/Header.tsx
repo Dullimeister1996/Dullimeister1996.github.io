@@ -21,9 +21,9 @@ export function Header() {
 
     const navItems = [
         {name: 'Home', path: '/'},
-        {name: 'About', path: '/about'},
-        {name: 'Services', path: '/services'},
-        {name: 'Contact', path: '/contact'},
+        {name: 'Bier', path: '/beer'},
+        {name: 'Über uns', path: '/about-us'},
+        {name: 'Kontakt', path: '/contact'},
     ];
 
     return (
@@ -33,9 +33,9 @@ export function Header() {
                 <div className="flex items-center justify-between h-16 md:h-20">
                     <Link to="/" className="flex items-center space-x-3">
                         <div className={`w-10 h-10 ${colors.accent} rounded-lg flex items-center justify-center`}>
-                            <span className="text-white font-bold text-xl">M</span>
+                            <span className="text-white font-bold text-xl">S</span>
                         </div>
-                        <span className="font-bold text-xl md:text-2xl">ModernSite</span>
+                        <span className="font-bold text-xl md:text-2xl">Schönsaufen</span>
                     </Link>
 
                     <nav className="hidden md:flex items-center space-x-8">

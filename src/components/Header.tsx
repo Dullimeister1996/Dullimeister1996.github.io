@@ -17,6 +17,7 @@ export function Header() {
         {value: 'dark', label: 'Dark'},
         {value: 'ocean', label: 'Ocean'},
         {value: 'sunset', label: 'Sunset'},
+        {value: 'beer', label: 'Beer'},
     ];
 
     const navItems = [

@@ -62,4 +62,16 @@ export const themeColors: Record<Theme, ThemeColors> = {
         accentHover: 'hover:bg-orange-700',
         border: 'border-orange-200',
     },
+    beer : {
+        bg: '',
+        text: 'text-white',
+        headerBg: 'bg-gray-800',
+        headerText: 'text-white',
+        footerBg: 'bg-gray-900',
+        footerText: 'text-yellow-100',
+        cardBg: 'bg-gray-800',
+        accent: 'bg-yellow-500',
+        accentHover: 'hover:bg-orange-700',
+        border: 'border-gray-700'
+    }
 };

@@ -21,7 +21,7 @@ export function Footer() {
     ];
 
     return (
-        <footer className={`${colors.footerBg} ${colors.footerText} transition-colors duration-300`}>
+        <footer className={`${colors.footerBg} ${colors.footerText} transition-colors duration-300 sticky`}>
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-8">
                     <div className="col-span-2 md:col-span-4 lg:col-span-1">

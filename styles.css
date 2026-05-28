@@ -1,0 +1,352 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #0f172a;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: 430px 1fr;
+  height: 100%;
+  background: #e2e8f0;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow: auto;
+  padding: 20px;
+  background: #f8fafc;
+  border-right: 1px solid #cbd5e1;
+}
+
+.brand {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 18px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgb(15 23 42 / 0.06);
+}
+
+.brand-icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  background: #fef3c7;
+  border-radius: 16px;
+  font-size: 24px;
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.1;
+}
+
+.brand p {
+  margin: 6px 0 0;
+  color: #475569;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.control-group {
+  padding: 14px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+}
+
+.control-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #334155;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.control-group small {
+  display: block;
+  margin-top: 8px;
+  color: #64748b;
+  line-height: 1.35;
+}
+
+.control-group input[type="range"],
+.control-group select {
+  width: 100%;
+}
+
+.control-group select {
+  padding: 10px 12px;
+  background: white;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+}
+
+.two-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.value-box {
+  padding: 10px 12px;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 13px;
+}
+
+.primary-button,
+.secondary-button {
+  width: 100%;
+  padding: 13px 16px;
+  border: 0;
+  border-radius: 15px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.primary-button {
+  background: #0f172a;
+  color: white;
+}
+
+.secondary-button {
+  background: white;
+  color: #0f172a;
+  border: 1px solid #cbd5e1;
+}
+
+.primary-button:disabled,
+.secondary-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.status-box {
+  padding: 14px;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: 16px;
+  color: #78350f;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.routes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.routes-list h2 {
+  margin: 0 0 2px;
+  font-size: 18px;
+}
+
+.route-card {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.route-card.active {
+  border-color: #0f172a;
+  box-shadow: 0 0 0 2px #0f172a inset;
+}
+
+.route-title {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 4px;
+  font-weight: 900;
+}
+
+.color-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+}
+
+.route-meta {
+  color: #475569;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.route-card ol {
+  margin: 0;
+  padding-left: 19px;
+  color: #334155;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.map-panel {
+  min-width: 0;
+  height: 100%;
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+}
+
+.start-marker,
+.end-marker,
+.bar-marker {
+  background: transparent;
+  border: 0;
+}
+
+.start-marker span,
+.end-marker span,
+.bar-marker span {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 3px solid white;
+  border-radius: 999px;
+  box-shadow: 0 8px 18px rgb(15 23 42 / 0.3);
+  font-weight: 900;
+}
+
+.start-marker span {
+  background: #22c55e;
+  color: white;
+}
+
+.end-marker span {
+  background: #ef4444;
+  color: white;
+}
+
+.bar-marker span {
+  background: #f59e0b;
+  color: #451a03;
+}
+
+@media (max-width: 980px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 70vh;
+  }
+
+  .sidebar {
+    max-height: 45vh;
+    border-right: 0;
+    border-bottom: 1px solid #cbd5e1;
+  }
+}
+
+.tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding: 6px;
+  background: #e2e8f0;
+  border-radius: 16px;
+}
+
+.tabs button {
+  padding: 11px 12px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: #475569;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.tabs button.active {
+  background: white;
+  color: #0f172a;
+  box-shadow: 0 8px 16px rgb(15 23 42 / 0.08);
+}
+
+.bar-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bar-list h2 {
+  margin: 0 0 2px;
+  font-size: 18px;
+}
+
+.bar-card {
+  padding: 14px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.bar-card-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+
+.bar-card-header span {
+  flex: 0 0 auto;
+  color: #2563eb;
+  font-weight: 900;
+}
+
+.bar-card a {
+  display: inline-block;
+  margin-top: 7px;
+  color: #2563eb;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.radius-marker {
+  background: transparent;
+  border: 0;
+}
+
+.radius-marker span {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 3px solid white;
+  border-radius: 999px;
+  background: #2563eb;
+  color: white;
+  box-shadow: 0 8px 18px rgb(15 23 42 / 0.3);
+  font-weight: 900;
+}

@@ -1,12 +1,34 @@
+:root {
+  color-scheme: light dark;
+  --text: #0f172a;
+  --border-soft: #e2e8f0;
+  --sidebar: #f8fafc;
+  --border: #cbd5e1;
+  --surface: #fff;
+  --brand-tint: #fef3c7;
+  --muted: #475569;
+  --secondary: #334155;
+  --subtle: #64748b;
+  --inset: #f1f5f9;
+  --status-text: #78350f;
+  --status-bg: #fffbeb;
+  --status-border: #fde68a;
+  --link: #2563eb;
+  --map-bg: #dbeafe;
+  --focus: #93c5fd;
+  --primary-bg: #0f172a;
+  --primary-text: #fff;
+}
+
 * {
   box-sizing: border-box;
 }
 html,
 body,
 #root {
-  color: #0f172a;
+  color: var(--text);
   overscroll-behavior: none;
-  background: #e2e8f0;
+  background: var(--border-soft);
   width: 100%;
   min-width: 0;
   height: 100%;
@@ -34,10 +56,10 @@ button:focus-visible,
 select:focus-visible,
 input:focus-visible {
   outline-offset: 2px;
-  outline: 3px solid #93c5fd;
+  outline: 3px solid var(--focus);
 }
 .app-shell {
-  background: #e2e8f0;
+  background: var(--border-soft);
   grid-template-columns: minmax(360px, 430px) minmax(0, 1fr);
   height: 100dvh;
   min-height: 100vh;
@@ -46,8 +68,8 @@ input:focus-visible {
 }
 .sidebar {
   -webkit-overflow-scrolling: touch;
-  background: #f8fafc;
-  border-right: 1px solid #cbd5e1;
+  background: var(--sidebar);
+  border-right: 1px solid var(--border);
   flex-direction: column;
   gap: 16px;
   min-width: 0;
@@ -56,8 +78,8 @@ input:focus-visible {
   overflow: auto;
 }
 .brand {
-  background: #fff;
-  border: 1px solid #e2e8f0;
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
   border-radius: 20px;
   align-items: flex-start;
   gap: 14px;
@@ -66,7 +88,7 @@ input:focus-visible {
   box-shadow: 0 10px 20px #0f172a0f;
 }
 .brand-icon {
-  background: #fef3c7;
+  background: var(--brand-tint);
   border-radius: 16px;
   flex: none;
   place-items: center;
@@ -81,13 +103,13 @@ input:focus-visible {
   line-height: 1.1;
 }
 .brand p {
-  color: #475569;
+  color: var(--muted);
   margin: 6px 0 0;
   font-size: 14px;
   line-height: 1.4;
 }
 .tabs {
-  background: #e2e8f0;
+  background: var(--border-soft);
   border-radius: 16px;
   grid-template-columns: 1fr 1fr;
   gap: 8px;
@@ -95,7 +117,7 @@ input:focus-visible {
   display: grid;
 }
 .tabs button {
-  color: #475569;
+  color: var(--muted);
   cursor: pointer;
   background: 0 0;
   border: 0;
@@ -105,25 +127,25 @@ input:focus-visible {
   font-weight: 900;
 }
 .tabs button.active {
-  color: #0f172a;
-  background: #fff;
+  color: var(--text);
+  background: var(--surface);
   box-shadow: 0 8px 16px #0f172a14;
 }
 .control-group {
-  background: #fff;
-  border: 1px solid #e2e8f0;
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
   border-radius: 16px;
   padding: 14px;
 }
 .control-group label {
-  color: #334155;
+  color: var(--secondary);
   margin-bottom: 8px;
   font-size: 13px;
   font-weight: 700;
   display: block;
 }
 .control-group small {
-  color: #64748b;
+  color: var(--subtle);
   margin-top: 8px;
   line-height: 1.35;
   display: block;
@@ -137,8 +159,8 @@ input:focus-visible {
   min-height: 34px;
 }
 .control-group select {
-  background: #fff;
-  border: 1px solid #cbd5e1;
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 12px;
   min-height: 44px;
   padding: 10px 12px;
@@ -150,8 +172,8 @@ input:focus-visible {
 }
 .value-box {
   overflow-wrap: anywhere;
-  background: #f1f5f9;
-  border: 1px solid #e2e8f0;
+  background: var(--inset);
+  border: 1px solid var(--border-soft);
   border-radius: 12px;
   min-width: 0;
   padding: 10px 12px;
@@ -169,13 +191,13 @@ input:focus-visible {
   font-weight: 800;
 }
 .primary-button {
-  color: #fff;
-  background: #0f172a;
+  color: var(--primary-text);
+  background: var(--primary-bg);
 }
 .secondary-button {
-  color: #0f172a;
-  background: #fff;
-  border: 1px solid #cbd5e1;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
 }
 .primary-button:disabled,
 .secondary-button:disabled {
@@ -183,9 +205,9 @@ input:focus-visible {
   opacity: 0.55;
 }
 .status-box {
-  color: #78350f;
-  background: #fffbeb;
-  border: 1px solid #fde68a;
+  color: var(--status-text);
+  background: var(--status-bg);
+  border: 1px solid var(--status-border);
   border-radius: 16px;
   padding: 14px;
   font-size: 14px;
@@ -206,16 +228,16 @@ input:focus-visible {
 .route-card {
   text-align: left;
   cursor: pointer;
-  background: #fff;
-  border: 1px solid #e2e8f0;
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
   border-radius: 16px;
   width: 100%;
   padding: 14px;
   display: block;
 }
 .route-card.active {
-  border-color: #0f172a;
-  box-shadow: inset 0 0 0 2px #0f172a;
+  border-color: var(--text);
+  box-shadow: inset 0 0 0 2px var(--text);
 }
 .route-title {
   align-items: center;
@@ -231,20 +253,20 @@ input:focus-visible {
   height: 12px;
 }
 .route-meta {
-  color: #475569;
+  color: var(--muted);
   margin-bottom: 8px;
   font-size: 13px;
 }
 .route-card ol {
-  color: #334155;
+  color: var(--secondary);
   margin: 0;
   padding-left: 19px;
   font-size: 13px;
   line-height: 1.45;
 }
 .bar-card {
-  background: #fff;
-  border: 1px solid #e2e8f0;
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
   border-radius: 16px;
   padding: 14px;
   font-size: 13px;
@@ -260,12 +282,12 @@ input:focus-visible {
   min-width: 0;
 }
 .bar-card-header span {
-  color: #2563eb;
+  color: var(--link);
   flex: none;
   font-weight: 900;
 }
 .bar-card a {
-  color: #2563eb;
+  color: var(--link);
   margin-top: 7px;
   font-weight: 800;
   text-decoration: none;
@@ -284,7 +306,7 @@ input:focus-visible {
   width: 100%;
   height: 100%;
   font: inherit;
-  background: #dbeafe;
+  background: var(--map-bg);
 }
 .leaflet-control-zoom a {
   width: 38px !important;
@@ -299,7 +321,7 @@ input:focus-visible {
   line-height: 1.4;
 }
 .leaflet-popup-content a {
-  color: #2563eb;
+  color: var(--link);
   font-weight: 800;
 }
 .start-marker,
@@ -365,7 +387,7 @@ input:focus-visible {
     overflow: visible;
   }
   .sidebar {
-    border-bottom: 1px solid #cbd5e1;
+    border-bottom: 1px solid var(--border);
     border-right: 0;
     order: 1;
     gap: 12px;
@@ -375,7 +397,7 @@ input:focus-visible {
     overflow: visible;
   }
   .map-panel {
-    border-top: 1px solid #cbd5e1;
+    border-top: 1px solid var(--border);
     order: 2;
     height: 62dvh;
     min-height: 420px;
@@ -395,7 +417,7 @@ input:focus-visible {
   }
   .tabs {
     z-index: 900;
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--border);
     position: sticky;
     top: 0;
     box-shadow: 0 8px 18px #0f172a14;
@@ -484,7 +506,7 @@ input:focus-visible {
   }
   .sidebar {
     border-bottom: 0;
-    border-right: 1px solid #cbd5e1;
+    border-right: 1px solid var(--border);
     height: 100dvh;
     overflow: auto;
   }
@@ -495,4 +517,75 @@ input:focus-visible {
   .brand p {
     display: none;
   }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #f1f5f9;
+    --border-soft: #293548;
+    --sidebar: #111827;
+    --border: #475569;
+    --surface: #1e293b;
+    --brand-tint: #493715;
+    --muted: #cbd5e1;
+    --secondary: #dbe3ef;
+    --subtle: #a9b8cc;
+    --inset: #0f172a;
+    --status-text: #fde68a;
+    --status-bg: #322713;
+    --status-border: #806225;
+    --link: #93c5fd;
+    --map-bg: #111827;
+    --focus: #fbbf24;
+    --primary-bg: #93c5fd;
+    --primary-text: #0f172a;
+  }
+
+  /* Filter only raster tiles: route colors, markers and controls stay intact. */
+  .leaflet-tile-pane {
+    filter: invert(1) hue-rotate(180deg) brightness(0.85) saturate(0.65);
+  }
+}
+
+button,
+select {
+  color: inherit;
+}
+input[type="range"] {
+  accent-color: var(--link);
+}
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip,
+.leaflet-control-zoom a {
+  background: var(--surface);
+  color: var(--text);
+}
+.leaflet-control-zoom a {
+  border-color: var(--border);
+}
+.leaflet-control-zoom a:hover,
+.leaflet-control-zoom a:focus {
+  background: var(--inset);
+  color: var(--text);
+}
+.leaflet-control-zoom a.leaflet-disabled {
+  background: var(--inset);
+  color: var(--subtle);
+}
+.leaflet-container .leaflet-control-attribution {
+  background: var(--surface);
+  color: var(--muted);
+}
+.leaflet-control-attribution a {
+  color: var(--link);
+}
+.leaflet-container a.leaflet-popup-close-button {
+  color: var(--muted);
+}
+.leaflet-container a.leaflet-popup-close-button:hover {
+  color: var(--text);
+}
+.leaflet-container a:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
 }

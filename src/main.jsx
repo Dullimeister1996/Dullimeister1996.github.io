@@ -1,3 +1,4 @@
+import LocationSearch from "./LocationSearch.jsx";
 import React, { useMemo, useState } from "react";
 import { createRoot } from "react-dom/client";
 import {
@@ -550,7 +551,18 @@ function RadiusSearchTab({
   );
 }
 
+function LocationFocus({ point }) {
+  const map = useMap();
+  React.useEffect(() => {
+    if (point) map.setView([point.lat, point.lng], 14);
+  }, [map, point]);
+  return null;
+}
+
 function App() {
+  const [locationFocus, setLocationFocus] = useState(null);
+  const [interactionVersion, setInteractionVersion] = useState(0);
+
   const [activeTab, setActiveTab] = useState("routes");
 
   const [start, setStart] = useState(null);
@@ -585,6 +597,7 @@ function App() {
   function handleMapClick(latlng) {
     if (loading || radiusLoading) return;
 
+    setInteractionVersion((version) => version + 1);
     const point = { lat: latlng.lat, lng: latlng.lng };
 
     if (activeTab === "radius") {
@@ -742,6 +755,7 @@ function App() {
   }
 
   function resetRoutes() {
+    setInteractionVersion((version) => version + 1);
     setStart(null);
     setEnd(null);
     setRoutes([]);
@@ -751,6 +765,7 @@ function App() {
   }
 
   function resetRadius() {
+    setInteractionVersion((version) => version + 1);
     setRadiusCenter(null);
     setRadiusBars([]);
     setRadiusStatus("Klicke auf die Karte, wähle einen Radius und suche alle Bier-Spots in diesem Bereich.");
@@ -767,6 +782,13 @@ function App() {
           </div>
         </div>
 
+        <LocationSearch disabled={loading || radiusLoading} interactionVersion={interactionVersion}
+          onSelect={(point, label) => {
+            setStart(point); setEnd(null); setRoutes([]); setBars([]); setSelectedRouteId(null);
+            setRadiusCenter(point); setRadiusBars([]); setLocationFocus({ ...point });
+            setStatus(`${label} als Start gesetzt. Klicke jetzt auf den Zielpunkt.`);
+            setRadiusStatus(`${label} als Suchpunkt gesetzt. Jetzt Bier-Spots im Radius suchen.`);
+          }} />
         <div className="tabs">
           <button className={activeTab === "routes" ? "active" : ""} onClick={() => setActiveTab("routes")}>
             Bar-Routen
@@ -828,6 +850,8 @@ function App() {
             radiusBars={radiusBars}
             radiusMeters={radiusMeters}
           />
+
+          <LocationFocus point={locationFocus} />
 
           {activeTab === "routes" && start && (
             <Marker position={[start.lat, start.lng]} icon={startIcon}>

@@ -55,3 +55,18 @@ its driving profile; displayed routes and durations are not walking directions.
 Map tiles, spot searches and routing need external OpenStreetMap, Overpass and
 OSRM services. Routing requests currently have no application timeout or cancel
 control. Source recovery does not address those separate functional changes.
+
+## Location and city search
+
+On first load the browser asks for location permission. On success, the location
+becomes both the route start and the radius-search center. Permission denial,
+unavailable geolocation and timeouts leave manual map and city selection usable.
+A city selection resets old results and centers the map; select a destination on
+the map for a route, or run the radius search directly. Delayed location callbacks
+cannot overwrite a later city selection or manual map interaction.
+
+City searches use Photon (https://photon.komoot.io/) with OpenStreetMap data,
+only on explicit submission, a ten-second timeout and session caching. Matching
+places include region/country to disambiguate names. Browser coordinates are not
+sent to the city geocoder. Photon is a public service without an availability
+guarantee; an error leaves manual map selection available.

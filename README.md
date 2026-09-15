@@ -1,73 +1,57 @@
-# React + TypeScript + Vite
+# Schönsaufen — Bier-Routenplaner
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React/Leaflet application published at https://www.schoensaufen.at.
+Find beer spots within a radius or calculate routes through groups of bars.
 
-Currently, two official plugins are available:
+## Development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Use Node.js 24 LTS and npm.
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```sh
+npm ci
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Build and publish
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```sh
+npm run build
+npm run check:build
+npm run preview
 ```
+
+Vite builds into `docs/`. Commit the generated `docs/` changes together with
+source changes. The existing GitHub Pages branch deployment can continue serving
+`main` → `/docs`; no hosting migration is required. The CI workflow rebuilds
+and verifies that the committed output matches the source, including new files.
+CI verifies builds; it does not replace the existing Pages deployment mechanism.
+
+`public/CNAME` is the single source for the custom domain and is copied by Vite.
+The build works on Windows, macOS and Linux without shell-specific copy commands.
+
+## Project layout
+
+- `src/main.jsx`: map, controls, spot queries and route ranking.
+- `src/styles.css`: application styling, including the published mobile layout.
+- `public/`: favicon and domain configuration.
+- `docs/`: generated GitHub Pages output; do not edit manually.
+- `scripts/check-build.mjs`: deployment artifact smoke checks.
+
+## Recovery provenance
+
+The published JavaScript at main commit
+`cd12acb92d1fd294f1a82b7032a3bb0972e37c3f` was byte-identical to the build on
+`routfinder` commit `b06d6fb7b8b0922fec88172568958b5bc2c96737`.
+The editable planner source was restored from that branch. The application CSS
+was recovered from the published stylesheet because it includes newer responsive
+rules than the branch. Leaflet's CSS remains imported from its package.
+Dependencies are pinned to the versions in the original planner lockfile.
+The obsolete landing page, sample chart, video and unused toolchains were removed.
+
+## Existing behavior and limitations
+
+This cleanup preserves the published application's behavior. OSRM currently uses
+its driving profile; displayed routes and durations are not walking directions.
+Map tiles, spot searches and routing need external OpenStreetMap, Overpass and
+OSRM services. Routing requests currently have no application timeout or cancel
+control. Source recovery does not address those separate functional changes.

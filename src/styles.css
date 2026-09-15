@@ -589,3 +589,50 @@ input[type="range"] {
   outline: 3px solid var(--focus);
   outline-offset: 2px;
 }
+
+.city-search-row {
+  display: flex;
+  gap: 8px;
+}
+.city-search-row input {
+  min-width: 0;
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px;
+  background: var(--inset);
+  color: var(--text);
+}
+.city-search-row input::placeholder {
+  color: var(--subtle);
+}
+.city-search-row .primary-button {
+  width: auto;
+  flex-shrink: 0;
+}
+.location-search > .secondary-button {
+  margin-top: 10px;
+}
+.location-message {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.4;
+  margin: 10px 0;
+}
+.location-message:empty {
+  display: none;
+}
+.city-results {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+  display: grid;
+  gap: 8px;
+}
+.city-results button {
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+.location-search a {
+  color: var(--link);
+}
